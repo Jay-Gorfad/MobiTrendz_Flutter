@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobitrendz/screens/order_successful.dart';
+import 'package:mobitrendz/screens/edit_address.dart ';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -46,26 +47,38 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.grey.shade300),
               ),
-              child: Row(
-                children: [
-                  const Icon(Icons.location_on, color: Colors.black),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Home",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold)),
-                        Text("61480 Kothariya Road",
-                            style: TextStyle(fontSize: 14, color: Colors.grey)),
-                      ],
+              child: GestureDetector(
+                onTap: () {
+                  // Navigate to EditAddressScreen when the container is tapped
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditAddressScreen()),
+                  );
+                },
+                child: Row(
+                  children: [
+                    const Icon(Icons.location_on, color: Colors.black),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text("Home",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
+                          Text("61480 Kothariya Road",
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.grey)),
+                        ],
+                      ),
                     ),
-                  ),
-                  const Icon(Icons.edit, color: Colors.grey),
-                ],
+                    const Icon(Icons.edit, color: Colors.grey),
+                  ],
+                ),
               ),
             ),
+
             const SizedBox(height: 20),
 
             // Order List Section

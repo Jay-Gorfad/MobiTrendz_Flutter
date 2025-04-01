@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobitrendz/screens/edit_profile.dart';
+import 'package:mobitrendz/screens/edit_address.dart';
+import 'package:mobitrendz/screens/signin_screen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -38,12 +41,36 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(fontSize: 14, color: Colors.grey[700])),
           SizedBox(height: 20),
           Divider(),
-          ProfileOption(icon: Icons.person, title: "Edit Profile"),
-          ProfileOption(icon: Icons.location_on, title: "Address"),
+          ProfileOption(
+            icon: Icons.person,
+            title: "Edit Profile",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditProfileScreen()),
+              );
+            },
+          ),
+          ProfileOption(
+            icon: Icons.location_on,
+            title: "Address",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditAddressScreen()),
+              );
+            },
+          ),
           ProfileOption(
             icon: Icons.logout,
             title: "Logout",
             color: Colors.red,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignInScreen()),
+              );
+            },
           ),
         ],
       ),
@@ -55,8 +82,10 @@ class ProfileOption extends StatelessWidget {
   final IconData icon;
   final String title;
   final Color? color;
+  final VoidCallback? onTap; // Callback function for navigation
 
-  const ProfileOption({required this.icon, required this.title, this.color});
+  const ProfileOption(
+      {required this.icon, required this.title, this.color, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +93,9 @@ class ProfileOption extends StatelessWidget {
       leading: Icon(icon, color: color ?? Colors.black),
       title: Text(title, style: TextStyle(color: color ?? Colors.black)),
       trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
-      onTap: () {},
+      onTap: onTap, // Handle navigation when tapped
     );
   }
 }
+
+// Edit Profile Screen (Add this screen)
