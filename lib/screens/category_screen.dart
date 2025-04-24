@@ -40,7 +40,7 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // ✅ Set background color to white
+      backgroundColor: Colors.white, // Set background color to white
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -58,26 +58,38 @@ class CategoryScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Category Section
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: categories.map((category) {
                 return Column(
                   children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.grey[200],
-                      radius: 32, // ✅ Increased size from 25 to 35
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              blurRadius: 8,
+                              offset: Offset(0, 4)),
+                        ],
+                      ),
+                      padding: EdgeInsets.all(14),
                       child: Image.asset(category["image"]!,
-                          width: 40), // ✅ Increased image size from 30 to 50
+                          width: 50), // Adjusted size
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 6),
                     Text(category["name"]!,
                         style: TextStyle(
-                            fontSize: 14)), // Slightly larger font size
+                            fontSize: 14, fontWeight: FontWeight.w600)),
                   ],
                 );
               }).toList(),
             ),
             SizedBox(height: 20),
+
+            // Products Section
             Expanded(
               child: GridView.builder(
                 itemCount: products.length,
@@ -90,35 +102,35 @@ class CategoryScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
-                      color: Colors.white, // ✅ White background
-                      border: Border.all(color: Colors.black12),
-                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.grey.shade200),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          blurRadius: 5,
-                          spreadRadius: 2,
+                          color: Colors.black12,
+                          blurRadius: 8,
+                          offset: Offset(0, 4),
                         ),
                       ],
                     ),
-                    padding: EdgeInsets.all(10), // ✅ Added padding
+                    padding: EdgeInsets.all(12),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(products[index]["image"]!,
-                            width: 120), // ✅ Increased size from 80 to 100
+                            width: 100), // Increased size
                         SizedBox(height: 10),
                         Text(
                           products[index]["name"]!,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15), // ✅ Slightly larger font
+                              fontSize: 16), // Increased font size
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 6),
                         Text(
                           products[index]["price"]!,
-                          style: TextStyle(color: Colors.grey, fontSize: 13),
+                          style: TextStyle(color: Colors.grey, fontSize: 14),
                         ),
                       ],
                     ),
