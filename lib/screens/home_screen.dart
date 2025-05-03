@@ -174,6 +174,10 @@ class HomePageContent extends StatelessWidget {
                     "assets/iphone.jpg", "iPhone 15 Pro", "₹1,30,990", context),
                 _buildProductCard(
                     "assets/redmi.png", "Redmi Note 13", "₹22,990", context),
+                _buildProductCard(
+                    "assets/iphone.jpg", "iPhone 15 Pro", "₹1,30,990", context),
+                _buildProductCard(
+                    "assets/redmi.png", "Redmi Note 13", "₹22,990", context),
               ],
             ),
             const SizedBox(height: 20),
@@ -239,10 +243,9 @@ class HomePageContent extends StatelessWidget {
           border: Border.all(color: Colors.grey.shade200),
           boxShadow: [
             BoxShadow(
-              color: Colors.black26, // Lighter, more subtle shadow color
-              blurRadius: 8, // Softer, less pronounced shadow
-              offset:
-                  Offset(0, 4), // Slightly shifted shadow for a natural look
+              color: Colors.black26,
+              blurRadius: 8,
+              offset: Offset(0, 4),
             ),
           ],
         ),

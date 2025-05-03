@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'package:mobitrendz/screens/home_screen.dart';
+import 'package:mobitrendz/screens/cart_screen.dart';
+import 'package:mobitrendz/screens/orders_screen.dart';
+import 'package:mobitrendz/screens/profile_screen.dart';
 
-class MyApp extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CategoryScreen(),
-    );
-  }
+  _CategoryScreenState createState() => _CategoryScreenState();
 }
 
-class CategoryScreen extends StatelessWidget {
+class _CategoryScreenState extends State<CategoryScreen> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _screens = [
+    HomePageContent(),
+    CartScreen(),
+    OrdersScreen(),
+    ProfileScreen(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   final List<Map<String, String>> categories = [
     {"name": "Apple", "image": "assets/apple.png"},
     {"name": "Samsung", "image": "assets/samsung.png"},
@@ -40,16 +51,14 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Set background color to white
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text(
-          "Category",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
+        title: Text("Category",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -58,7 +67,6 @@ class CategoryScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Category Section
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: categories.map((category) {
@@ -70,14 +78,13 @@ class CategoryScreen extends StatelessWidget {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
+                              color: Colors.black26,
                               blurRadius: 8,
                               offset: Offset(0, 4)),
                         ],
                       ),
                       padding: EdgeInsets.all(14),
-                      child: Image.asset(category["image"]!,
-                          width: 50), // Adjusted size
+                      child: Image.asset(category["image"]!, width: 40),
                     ),
                     SizedBox(height: 6),
                     Text(category["name"]!,
@@ -88,8 +95,6 @@ class CategoryScreen extends StatelessWidget {
               }).toList(),
             ),
             SizedBox(height: 20),
-
-            // Products Section
             Expanded(
               child: GridView.builder(
                 itemCount: products.length,
@@ -117,21 +122,15 @@ class CategoryScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(products[index]["image"]!,
-                            width: 100), // Increased size
+                        Image.asset(products[index]["image"]!, width: 100),
                         SizedBox(height: 10),
-                        Text(
-                          products[index]["name"]!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16), // Increased font size
-                          textAlign: TextAlign.center,
-                        ),
+                        Text(products[index]["name"]!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                            textAlign: TextAlign.center),
                         SizedBox(height: 6),
-                        Text(
-                          products[index]["price"]!,
-                          style: TextStyle(color: Colors.grey, fontSize: 14),
-                        ),
+                        Text(products[index]["price"]!,
+                            style: TextStyle(color: Colors.grey, fontSize: 14)),
                       ],
                     ),
                   );
@@ -141,16 +140,34 @@ class CategoryScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: "Cart"),
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: "Orders"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 10,
+              offset: Offset(0, -4),
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          elevation: 0,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart), label: "Cart"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.list_alt), label: "Orders"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          ],
+        ),
       ),
     );
   }

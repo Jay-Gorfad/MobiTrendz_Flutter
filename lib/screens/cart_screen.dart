@@ -178,25 +178,24 @@ class BottomCheckoutBar extends StatelessWidget {
           ),
           SizedBox(height: 12),
           ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.black,
-    minimumSize: const Size(double.infinity, 50),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-    ),
-  ),
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const CheckoutScreen()),
-    );
-  },
-  child: const Text(
-    "Checkout",
-    style: TextStyle(fontSize: 16, color: Colors.white),
-  ),
-),
-
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+              minimumSize: const Size(double.infinity, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CheckoutScreen()),
+              );
+            },
+            child: const Text(
+              "Checkout",
+              style: TextStyle(fontSize: 16, color: Colors.white),
+            ),
+          ),
         ],
       ),
     );

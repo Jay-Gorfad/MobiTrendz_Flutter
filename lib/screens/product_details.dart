@@ -20,6 +20,7 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   int quantity = 1;
   double totalPrice = 0.0;
+  Color selectedColor = Colors.orange; // Default selected color
 
   @override
   void initState() {
@@ -113,8 +114,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   const Text("128 GB", style: TextStyle(fontSize: 16)),
                   Row(
                     children: [
-                      _buildColorOption(Colors.orange, isSelected: true),
-                      _buildColorOption(Colors.black),
+                      _buildColorOption(Colors.orange),
+                      _buildColorOption(Colors.grey),
                       _buildColorOption(Colors.green),
                     ],
                   ),
@@ -192,15 +193,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   // Color Selection Widget
-  Widget _buildColorOption(Color color, {bool isSelected = false}) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4),
-      width: 24,
-      height: 24,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-        border: isSelected ? Border.all(color: Colors.black, width: 2) : null,
+  Widget _buildColorOption(Color color) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedColor = color; // Update selected color
+        });
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        width: 24,
+        height: 24,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+          border: selectedColor == color
+              ? Border.all(
+                  color: Colors.black,
+                  width: 2) // Change this color to any you prefer
+              : null,
+        ),
       ),
     );
   }
