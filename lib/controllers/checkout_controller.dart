@@ -53,13 +53,14 @@ class CheckoutController extends GetxController {
   Future<void> createRazorpayOrder() async {
     final url = Uri.parse('${AppConstants.baseUrl}/payment/create-order');
     isLoading.value = true;
-
     try {
       final response = await http.post(
         url,
         body: json.encode({'amount': totalPrice.value}),
         headers: {'Content-Type': 'application/json'},
       );
+      print(totalPrice.value);
+      print(response.statusCode);
 
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);
@@ -67,10 +68,10 @@ class CheckoutController extends GetxController {
           final razorpayOrderId = responseData['order']['id'];
           initiatePayment(razorpayOrderId);
         } else {
-          Get.snackbar('Error', 'Failed to create Razorpay order');
+          Get.snackbar('Error', 'Failed to create Razorpay order 1');
         }
       } else {
-        Get.snackbar('Error', 'Failed to create Razorpay order');
+        Get.snackbar('Error', 'Failed to create Razorpay order 2');
       }
     } catch (error) {
       Get.snackbar('Error', 'An error occurred while creating Razorpay order');
@@ -89,25 +90,34 @@ class CheckoutController extends GetxController {
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
   }
 
-  // Method to initiate payment via Razorpay SDK
   void initiatePayment(String razorpayOrderId) {
     var options = {
-      'key': AppConstants.razorPayKey, // Replace with your actual Razorpay key
-      'amount': (totalPrice.value * 100).toInt(), // Amount in paise
+      'key': AppConstants.razorPayKey,
+      'amount': (totalPrice.value * 100).toInt(), // in paise
       'currency': 'INR',
       'order_id': razorpayOrderId,
-      'name': 'Purebite grocery shop',
+      'name': 'Mobitrendz shop',
       'description': 'Order Payment',
       'prefill': {
         'name':
             '${selectedAddress["firstName"] ?? ""} ${selectedAddress["lastName"] ?? ""}',
-        'contact': selectedAddress["phone"] ?? "",
+        'email': selectedAddress["email"] ??
+            "test@example.com", // Razorpay requires email sometimes
+        'contact': selectedAddress["phone"] ??
+            "9999999999", // Must be valid 10-digit number
       },
-      'theme': "#53B175",
+      'theme': {'color': '#53B175'},
       'retry': {
         'enabled': true,
         'max_count': 1,
       },
+      'method': {
+        // Let Razorpay show all methods without forcing user input
+        'netbanking': true,
+        'card': true,
+        'upi': true,
+        'wallet': true,
+      }
     };
 
     try {
