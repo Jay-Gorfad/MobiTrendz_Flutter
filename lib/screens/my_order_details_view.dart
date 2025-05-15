@@ -64,7 +64,7 @@ class _MyOrdersDetailViewState extends State<MyOrdersDetailView> {
         ),
         centerTitle: true,
         title: Text(
-          "My Order Detail",
+          "Order Details",
           style: TextStyle(
             color: Colors.black87,
             fontSize: 20,
@@ -119,14 +119,14 @@ class _MyOrdersDetailViewState extends State<MyOrdersDetailView> {
                   ),
                 ),
               ),
-              Text(
-                getPaymentStatus(order),
-                style: TextStyle(
-                  color: getPaymentStatusColor(order),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+              // Text(
+              //   getPaymentStatus(order),
+              //   style: TextStyle(
+              //     color: getPaymentStatusColor(order),
+              //     fontSize: 18,
+              //     fontWeight: FontWeight.w700,
+              //   ),
+              // ),
             ],
           ),
           const SizedBox(height: 4),

@@ -66,25 +66,25 @@ class CheckoutScreen extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text('Phone: ${selectedAddress['phone'] ?? ''}'),
                           const SizedBox(height: 10),
-                          SizedBox(
-                            width: double.infinity,
-                            child: OutlinedButton(
-                              onPressed: () {
-                                Get.to(() => SelectAddressView());
-                              },
-                              style: OutlinedButton.styleFrom(
-                                side:
-                                    const BorderSide(color: Colors.blueAccent),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                              child: const Text(
-                                'Change Address',
-                                style: TextStyle(color: Colors.blueAccent),
-                              ),
-                            ),
-                          ),
+                          //   SizedBox(
+                          //     width: double.infinity,
+                          //     child: OutlinedButton(
+                          //       onPressed: () {
+                          //         Get.to(() => SelectAddressView());
+                          //       },
+                          //       style: OutlinedButton.styleFrom(
+                          //         side:
+                          //             const BorderSide(color: Colors.blueAccent),
+                          //         shape: RoundedRectangleBorder(
+                          //           borderRadius: BorderRadius.circular(8),
+                          //         ),
+                          //       ),
+                          //       child: const Text(
+                          //         'Change Address',
+                          //         style: TextStyle(color: Colors.blueAccent),
+                          //       ),
+                          //     ),
+                          //   ),
                         ],
                       ),
                     ),
@@ -215,7 +215,8 @@ class CheckoutScreen extends StatelessWidget {
                                         .createRazorpayOrder(); // Starts the payment process
                                   },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 110, 190, 255),
                               padding: const EdgeInsets.symmetric(vertical: 14),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),

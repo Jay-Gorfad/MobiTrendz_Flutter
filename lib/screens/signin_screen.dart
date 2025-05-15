@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobitrendz/controllers/google_sign_in_controller.dart';
 import 'package:mobitrendz/screens/forgot_password_screen.dart';
+import 'package:mobitrendz/screens/signup_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobitrendz/constants/app_constants.dart';
 import 'package:mobitrendz/screens/home_screen.dart';
@@ -19,6 +21,8 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController txtEmail = TextEditingController();
   final TextEditingController txtPassword = TextEditingController();
   bool isLoading = false;
+  final GoogleSignInController _googleSignInController =
+      GoogleSignInController();
 
   Future<void> signIn() async {
     if (_formKey.currentState?.validate() ?? false) {
@@ -163,7 +167,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
-                        child: Image.asset("assets/google_logo.png"),
+                        child: IconButton(
+                            onPressed: () async {
+                              await _googleSignInController.signInWithGoogle();
+                            },
+                            icon: Image.asset("assets/google_logo.png")),
                       ),
                     ),
                   ),
@@ -176,7 +184,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     const SizedBox(width: 5),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed('/signup'); // or use Navigator
+                        Get.to(() => SignUpScreen()); // or use Navigator
                       },
                       child: const Text(
                         "Sign up",

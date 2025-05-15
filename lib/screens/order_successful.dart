@@ -37,23 +37,23 @@ class OrderSuccessScreen extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Order Summary Card
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey.shade300),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                      blurRadius: 8,
-                      spreadRadius: 2,
-                    ),
-                  ],
-                ),
-              ),
+              // Container(
+              //   padding: const EdgeInsets.all(16),
+              //   decoration: BoxDecoration(
+              //     color: Colors.white,
+              //     borderRadius: BorderRadius.circular(10),
+              //     border: Border.all(color: Colors.grey.shade300),
+              //     boxShadow: [
+              //       BoxShadow(
+              //         color: Colors.grey.withOpacity(0.1),
+              //         blurRadius: 8,
+              //         spreadRadius: 2,
+              //       ),
+              //     ],
+              //   ),
+              // ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 18),
 
               // Continue Shopping Button
               SizedBox(

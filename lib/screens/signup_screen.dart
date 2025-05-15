@@ -88,22 +88,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             const Text(
               "Create your",
               style: TextStyle(
-                  fontSize: 32,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.black87),
             ),
             const Text(
               "Account",
               style: TextStyle(
-                  fontSize: 36,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 18),
             Expanded(
               child: SingleChildScrollView(
                 child: Form(
