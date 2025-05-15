@@ -43,26 +43,28 @@ class ProductCard extends StatelessWidget {
           ],
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Product Image
-            ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(12)),
-              child: Image.network(
-                imageUrl,
-                height: 120,
-                width: double.infinity,
-                fit: BoxFit.cover,
+            // FIXED HEIGHT CONTAINER with BoxDecoration (object-fit: cover)
+            Container(
+              height: 120,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(12)),
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
+                ),
               ),
             ),
-            // Product Info
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Title
                   Text(
                     title,
                     style: const TextStyle(
@@ -73,14 +75,13 @@ class ProductCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
-                  // Price & Discount Row
                   Row(
                     children: [
                       Text(
                         '₹$price',
                         style: const TextStyle(
                           fontSize: 14,
-                          color: Colors.green,
+                          color: Colors.black,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -104,13 +105,13 @@ class ProductCard extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  // Add to Cart Button
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: isLoading ? null : onCart,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
+                        backgroundColor:
+                            const Color.fromARGB(255, 110, 190, 255),
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -126,7 +127,12 @@ class ProductCard extends StatelessWidget {
                                     AlwaysStoppedAnimation<Color>(Colors.white),
                               ),
                             )
-                          : const Text('Add to Cart'),
+                          : const Text(
+                              'Add to Cart',
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                     ),
                   ),
                 ],

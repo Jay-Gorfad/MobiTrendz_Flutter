@@ -191,13 +191,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+                
                 const SizedBox(height: 6),
                 Text(
                   '₹${totalPrice.toString()}',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: Colors.green,
+                    color: Colors.black,
                   ),
                 ),
               ],

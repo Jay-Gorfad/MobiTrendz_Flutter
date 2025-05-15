@@ -629,16 +629,16 @@ class BottomCheckoutBar extends StatelessWidget {
                     color: Colors.white24,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  child: Text(
-                    "₹${totalPrice.toStringAsFixed(2)}",
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
+                  // padding:
+                  //     const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                  // child: Text(
+                  //   "₹${totalPrice.toStringAsFixed(2)}",
+                  //   style: const TextStyle(
+                  //     fontSize: 12,
+                  //     fontWeight: FontWeight.w500,
+                  //     color: Colors.white,
+                  //   ),
+                  // ),
                 )
               ],
             ),

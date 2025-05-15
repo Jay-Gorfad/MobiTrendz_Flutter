@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "189140955367",
+    "project_id": "mobitrendz-539c4",
+    "storage_bucket": "mobitrendz-539c4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189140955367:android:2319d4ebdb4395d3a67242",
+        "android_client_info": {
+          "package_name": "com.example.mobitrendz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDELu8v0fVNrvbiQ-mYD3LxAeDQ_4KkKzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -121,7 +121,7 @@ class _HomePageContentState extends State<HomePageContent> {
                   ),
                   TextSpan(
                     text: 'Trendz',
-                    style: TextStyle(color: Colors.deepPurple),
+                    style: TextStyle(color: Colors.blueAccent),
                   ),
                 ],
               ),
@@ -151,7 +151,7 @@ class _HomePageContentState extends State<HomePageContent> {
               ),
             ),
             const SizedBox(height: 18),
-            const Text("Trending Banners",
+            const Text("Trending",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             Obx(() {
@@ -187,7 +187,7 @@ class _HomePageContentState extends State<HomePageContent> {
             const SizedBox(height: 20),
 
             // Categories
-            const Text("Browse by Brand",
+            const Text("Browse by Brands",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
             const SizedBox(height: 12),
             Obx(() {
@@ -207,7 +207,6 @@ class _HomePageContentState extends State<HomePageContent> {
                 ),
               );
             }),
-            const SizedBox(height: 18),
             const SizedBox(height: 20),
             // const Text("Promo Codes",
             //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -279,7 +278,7 @@ class _HomePageContentState extends State<HomePageContent> {
             //   );
             // }),
 
-            const SizedBox(height: 20),
+            // const SizedBox(height: 1),
             const Text("Latest Products",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
